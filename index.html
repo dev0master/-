@@ -1,128 +1,667 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>بوابة المعاملات الرقمية - وزارة الداخلية</title>
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>عراقنا | البوابة الرقمية - وزارة الداخلية</title>
+
+<style>
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Tahoma, Arial, sans-serif;
+}
+
+body{
+    background: #f4f7fa;
+    color: #17212b;
+}
+
+/* ===== الهيدر ===== */
+header{
+    background: linear-gradient(135deg, #071d2b, #123b52);
+    color: white;
+    padding: 15px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.brand{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo{
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 27px;
+}
+
+.brand h1{
+    font-size: 22px;
+}
+
+.brand p{
+    font-size: 12px;
+    opacity: .8;
+}
+
+nav{
+    display: flex;
+    gap: 8px;
+}
+
+nav button{
+    background: transparent;
+    color: white;
+    border: 0;
+    padding: 10px 13px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+nav button:hover{
+    background: #ffffff18;
+}
+
+/* ===== الرئيسية ===== */
+.hero{
+    background: linear-gradient(135deg, #0b2d42, #176087);
+    color: white;
+    padding: 55px 7%;
+}
+
+.hero h2{
+    font-size: 34px;
+    margin-bottom: 12px;
+}
+
+.hero p{
+    max-width: 650px;
+    line-height: 1.9;
+    opacity: .9;
+}
+
+.container{
+    width: 90%;
+    max-width: 1200px;
+    margin: 35px auto;
+}
+
+.section-title{
+    margin: 35px 0 18px;
+    font-size: 25px;
+}
+
+/* ===== الخدمات ===== */
+.categories{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 18px;
+}
+
+.category{
+    background: white;
+    border-radius: 18px;
+    padding: 25px;
+    cursor: pointer;
+    box-shadow: 0 5px 20px #0000000b;
+    transition: .2s;
+}
+
+.category:hover{
+    transform: translateY(-5px);
+}
+
+.category-icon{
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.category h3{
+    margin-bottom: 8px;
+}
+
+.category p{
+    color: #777;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* ===== الأخبار ===== */
+.news{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.news-card{
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px #0000000c;
+}
+
+.news-card img{
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+}
+
+.news-content{
+    padding: 18px;
+}
+
+.news-content h3{
+    margin-bottom: 8px;
+}
+
+.news-content p{
+    color: #777;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.date{
+    display: block;
+    color: #8b8b8b;
+    font-size: 12px;
+    margin: 12px 0;
+}
+
+.read{
+    background: #123b52;
+    color: white;
+    border: 0;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* ===== التبليغات ===== */
+.report-box{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.report{
+    padding: 28px;
+    border-radius: 18px;
+    color: white;
+}
+
+.emergency{
+    background: #b52b2b;
+}
+
+.secret{
+    background: #44265e;
+}
+
+.report h3{
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.report p{
+    line-height: 1.8;
+    opacity: .9;
+}
+
+.report button{
+    margin-top: 18px;
+    background: white;
+    color: #222;
+    border: 0;
+    padding: 11px 18px;
+    border-radius: 9px;
+    cursor: pointer;
+}
+
+/* ===== الفوتر ===== */
+footer{
+    margin-top: 50px;
+    background: #071d2b;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    line-height: 2;
+}
+
+/* ===== النوافذ ===== */
+.modal{
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #0009;
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-box{
+    width: 92%;
+    max-width: 520px;
+    max-height: 90vh;
+    overflow: auto;
+    background: white;
+    padding: 28px;
+    border-radius: 18px;
+}
+
+.modal-box h2{
+    margin-bottom: 18px;
+}
+
+.close{
+    float: left;
+    background: #ddd;
+    border: 0;
+    padding: 7px 12px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.service-list{
+    display: grid;
+    gap: 12px;
+}
+
+.service-item{
+    background: #f2f5f7;
+    padding: 17px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.service-item:hover{
+    background: #e6edf2;
+}
+
+input, select, textarea{
+    width: 100%;
+    padding: 13px;
+    margin: 7px 0;
+    border: 1px solid #ddd;
+    border-radius: 9px;
+}
+
+.submit{
+    width: 100%;
+    background: #123b52;
+    color: white;
+    border: 0;
+    padding: 13px;
+    border-radius: 9px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+/* موبايل */
+@media(max-width:700px){
+    header{
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    nav{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero h2{
+        font-size: 27px;
+    }
+
+    .report-box{
+        grid-template-columns: 1fr;
+    }
+}
+</style>
 </head>
-<body class="bg-gray-100 font-sans min-h-screen flex flex-col justify-between text-gray-800">
 
-  <!-- Header -->
-  <header class="bg-slate-900 text-white p-4 shadow-md border-b-4 border-amber-500">
-    <div class="max-w-4xl mx-auto flex justify-between items-center">
-      <div class="flex items-center gap-3">
-        <span class="text-3xl">🏛️</span>
+<body>
+
+<!-- ===== الهيدر ===== -->
+<header>
+    <div class="brand">
+        <div class="logo">🇮🇶</div>
         <div>
-          <h1 class="text-xl font-bold">بوابة الخدمات والمعاملات الرقمية</h1>
-          <p class="text-xs text-gray-300">وزارة الداخلية - التحول الرقمي وإدارة التراخيص</p>
+            <h1>عراقنا</h1>
+            <p>البوابة الرقمية للخدمات الإلكترونية</p>
         </div>
-      </div>
-      <span class="bg-amber-500/20 text-amber-400 border border-amber-500/40 text-xs px-3 py-1 rounded-full font-bold">
-        خدمة 24/7
-      </span>
-    </div>
-  </header>
-
-  <!-- Main Container -->
-  <main class="max-w-4xl mx-auto w-full p-4 space-y-6 flex-grow">
-
-    <!-- Category Selection -->
-    <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-200">
-      <h2 class="text-base font-bold text-slate-800 mb-3">اختر المعاملة المطلوبة:</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-        <button type="button" onclick="selectService(this, 'عدم محكومية')" class="service-btn border-2 border-gray-200 p-4 rounded-xl flex flex-col items-center hover:border-slate-800 focus:outline-none transition-all">
-          <span class="text-3xl mb-1">📜</span>
-          <span class="text-sm font-bold">شهادة عدم المحكومية</span>
-          <span class="text-[11px] text-gray-400 mt-0.5">إلكتروني بالكامل</span>
-        </button>
-        <button type="button" onclick="selectService(this, 'تجديد الإجازة')" class="service-btn border-2 border-gray-200 p-4 rounded-xl flex flex-col items-center hover:border-slate-800 focus:outline-none transition-all">
-          <span class="text-3xl mb-1">🚗</span>
-          <span class="text-sm font-bold">تجديد إجازة السوق</span>
-          <span class="text-[11px] text-gray-400 mt-0.5">المرور العامة</span>
-        </button>
-        <button type="button" onclick="selectService(this, 'ترخيص سلاح')" class="service-btn border-2 border-gray-200 p-4 rounded-xl flex flex-col items-center hover:border-slate-800 focus:outline-none transition-all">
-          <span class="text-3xl mb-1">🛡️</span>
-          <span class="text-sm font-bold">طلب حيازة سلاح شخصي</span>
-          <span class="text-[11px] text-gray-400 mt-0.5">مديرية السلاح</span>
-        </button>
-      </div>
     </div>
 
-    <!-- Application Form -->
-    <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-200 space-y-4">
-      <h2 class="text-base font-bold text-slate-800 border-b pb-2">بيانات مقدم الطلب:</h2>
-      
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div>
-          <label class="block text-xs font-bold text-gray-700 mb-1">الاسم الثلاثي:</label>
-          <input type="text" id="fullname" placeholder="مثال: علي حسين محمد" class="w-full border rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-slate-800 focus:outline-none">
+    <nav>
+        <button onclick="scrollToSection('services')">الخدمات</button>
+        <button onclick="scrollToSection('reports')">التبليغات</button>
+        <button onclick="scrollToSection('news')">أخبار الداخلية</button>
+        <button onclick="scrollToSection('applications')">التقديمات</button>
+    </nav>
+</header>
+
+
+<!-- ===== الرئيسية ===== -->
+<section class="hero">
+    <h2>مرحباً بك في بوابة عراقنا</h2>
+    <p>
+        منصة رقمية موحدة تعنى بالخدمات الإلكترونية، والتقديمات العسكرية للمعهد العالي،
+        وأخبار وزارة الداخلية والتبليغات السريعة والسرية للمواطنين.
+    </p>
+</section>
+
+
+<div class="container">
+
+    <!-- ===== الخدمات ===== -->
+    <h2 class="section-title" id="services">الخدمات الإلكترونية</h2>
+
+    <div class="categories">
+        <div class="category" onclick="openServices('خدمات المرور والمركبات')">
+            <div class="category-icon">🚗</div>
+            <h3>خدمات المرور والمركبات</h3>
+            <p>تجديد إجازات السوق، غرامات المرور، ونقل ملكية المركبات.</p>
         </div>
-        <div>
-          <label class="block text-xs font-bold text-gray-700 mb-1">رقم البطاقة الموحدة / الهوية:</label>
-          <input type="text" id="idNum" placeholder="12 رقم" class="w-full border rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-slate-800 focus:outline-none">
+
+        <div class="category" onclick="openServices('الخدمات المدنية والأحوال')">
+            <div class="category-icon">🪪</div>
+            <h3>الخدمات المدنية والأحوال</h3>
+            <p>حجز البطاقة الوطنية الموحدة، جوازات السفر، وجواز السفر الإلكتروني.</p>
         </div>
-      </div>
 
-      <div>
-        <label class="block text-xs font-bold text-gray-700 mb-1">إرفاق مستمسك رسمية (صورة الموحدة / البطاقة السكنية):</label>
-        <input type="file" id="docs" class="w-full text-xs text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-slate-100 file:text-slate-700 hover:file:bg-slate-200">
-      </div>
+        <div class="category" onclick="openServices('خدمات الحيازة والأدلة')">
+            <div class="category-icon">📄</div>
+            <h3>خدمات الحيازة والأدلة الجنائية</h3>
+            <p>شهادة عدم المحكومية، تراخيص حيازة السلاح، والإجراءات الرسمية.</p>
+        </div>
 
-      <button onclick="submitApplication()" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 rounded-xl shadow-md transition-all">
-        تقديم المعاملة دفع واستلام رقم المتابعة 💳
-      </button>
+        <div class="category" onclick="openServices('خدمات دفاع مدني وأخرى')">
+            <div class="category-icon">📋</div>
+            <h3>خدمات أخرى</h3>
+            <p>تراخيص السلامة، خدمات الدفاع المدني، والخدمات العامة.</p>
+        </div>
     </div>
 
-    <!-- Status Tracker -->
-    <div id="tracker" class="bg-white p-5 rounded-xl shadow-sm border border-gray-200 hidden space-y-3">
-      <h2 class="text-base font-bold text-slate-800 border-b pb-2">حالة المعاملة الحالية:</h2>
-      <div class="flex items-center justify-between text-xs font-bold">
-        <span id="reqNumber" class="text-slate-600">رقم الطلب: #123456</span>
-        <span class="bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full">قيد التدقيق والتدقيق الأمني</span>
-      </div>
-      <div class="w-full bg-gray-200 rounded-full h-2.5">
-        <div class="bg-amber-500 h-2.5 rounded-full" style="width: 40%"></div>
-      </div>
-      <p class="text-xs text-gray-500">سيصلك إشعار بالنتيجة خلال 24-48 ساعة عمل.</p>
+
+    <!-- ===== التبليغات ===== -->
+    <h2 class="section-title" id="reports">التبليغات والشكاوى</h2>
+
+    <div class="report-box">
+        <div class="report emergency">
+            <h3>🚨 تبليغ عن حادث (الدفاع المدني/الشرطة)</h3>
+            <p>إرسال بلاغ عن حادث طارئ أو حريق مع موقع الحادث للتعامل السريع.</p>
+            <button onclick="openReport()">إنشاء بلاغ طارئ</button>
+        </div>
+
+        <div class="report secret">
+            <h3>🔒 بلاغ سري (الأمن والمعلومات)</h3>
+            <p>إرسال معلومات سرية إلى الجهات المختصة في وزارة الداخلية مع ضمان السرية التامة.</p>
+            <button onclick="openSecret()">إرسال بلاغ سري</button>
+        </div>
     </div>
 
-  </main>
 
-  <!-- Footer -->
-  <footer class="bg-white border-t text-center p-3 text-xs text-gray-500">
-    جميع الحقوق محفوظة - بوابة المعاملات الإلكترونية © وزارة الداخلية
-  </footer>
+    <!-- ===== الأخبار (خاصة بوزارة الداخلية) ===== -->
+    <h2 class="section-title" id="news">أخبار وزارة الداخلية</h2>
 
-  <script>
-    let selectedService = '';
+    <div class="news">
+        <div class="news-card">
+            <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=900&q=80">
+            <div class="news-content">
+                <h3>تحديثات المعهد العالي للتطوير الأمني</h3>
+                <span class="date">عاجل</span>
+                <p>وزارة الداخلية تعلن عن شروط وضوابط التقديم للدورة الجديدة بالمعهد العالي لتطوير الكفاءات لضباط المستقبل.</p>
+                <button class="read">قراءة التفاصيل</button>
+            </div>
+        </div>
 
-    function selectService(btn, serviceName) {
-      document.querySelectorAll('.service-btn').forEach(b => b.classList.remove('border-slate-800', 'bg-slate-50'));
-      btn.classList.add('border-slate-800', 'bg-slate-50');
-      selectedService = serviceName;
+        <div class="news-card">
+            <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=900&q=80">
+            <div class="news-content">
+                <h3>توسع منظومة البطاقة الوطنية والجواز الإلكتروني</h3>
+                <span class="date">اليوم</span>
+                <p>افتتاح مراكز جديدة لإصدار الجواز الإلكتروني والبطاقة الموحدة لسرعة إنجاز معاملات المواطنين.</p>
+                <button class="read">قراءة التفاصيل</button>
+            </div>
+        </div>
+
+        <div class="news-card">
+            <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=900&q=80">
+            <div class="news-content">
+                <h3>حملات التوعية ومكافحة الجريمة الإلكترونية</h3>
+                <span class="date">أمس</span>
+                <p>الداخلية تطلق خطوطاً ساخنة جديدة واستجابة فورية لحالات الابتزاز الإلكتروني والأمن السبراني.</p>
+                <button class="read">قراءة التفاصيل</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ===== التقديمات العسكرية ===== -->
+    <h2 class="section-title" id="applications">التقديمات العسكرية</h2>
+
+    <div class="categories">
+        <div class="category" onclick="openApplication()">
+            <div class="category-icon">🎖️</div>
+            <h3>التقديم على المعهد العالي لتطوير الكفاءات</h3>
+            <p>دورة إعداد الضباط لحملة شهادة البكالوريوس للتخصصات المدنية والعلمية والهندسية.</p>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- ===== نافذة الخدمات الديناميكية ===== -->
+<div class="modal" id="serviceModal">
+    <div class="modal-box">
+        <button class="close" onclick="closeModal('serviceModal')">إغلاق</button>
+        <h2 id="serviceTitle">الخدمات</h2>
+        <div class="service-list" id="serviceListContent">
+            <!-- يتم تحميل العناصر عبر السكربت حسب الكارت بدون تكرار -->
+        </div>
+    </div>
+</div>
+
+
+<!-- ===== نافذة بلاغ طارئ ===== -->
+<div class="modal" id="reportModal">
+    <div class="modal-box">
+        <button class="close" onclick="closeModal('reportModal')">إغلاق</button>
+        <h2>🚨 إنشاء بلاغ طارئ</h2>
+        <select>
+            <option>اختر نوع البلاغ</option>
+            <option>حريق (دفاع مدني)</option>
+            <option>حادث مروري مجسيم</option>
+            <option>حالة أمنية طارئة</option>
+            <option>طلب نجدة</option>
+        </select>
+        <input type="number" placeholder="عدد المصابين (إن وجد)">
+        <textarea rows="4" placeholder="اكتب وصفاً مختصراً للحادث والموقع بالتفصيل"></textarea>
+        <input type="file" accept="image/*">
+        <button class="submit" onclick="sendReport()">إرسال البلاغ فوراً</button>
+    </div>
+</div>
+
+
+<!-- ===== نافذة البلاغ السري ===== -->
+<div class="modal" id="secretModal">
+    <div class="modal-box">
+        <button class="close" onclick="closeModal('secretModal')">إغلاق</button>
+        <h2>🔒 بلاغ سري - مديرية أمن المعلومات</h2>
+        <p style="line-height:1.8; color:#666; font-size: 13px; margin-bottom: 10px;">
+            تضمن وزارة الداخلية السرية التامة لهوية المبلغ والمعلومات المقدمة.
+        </p>
+        <select>
+            <option>نوع قضية البلاغ</option>
+            <option>ابتزاز إلكتروني</option>
+            <option>مكافحة المخدرات</option>
+            <option>فساد إداري/مالي</option>
+            <option>خروقات أمنية</option>
+        </select>
+        <textarea rows="5" placeholder="اكتب تفاصيل البلاغ والمعلومات المتاحة لديك"></textarea>
+        <input type="file">
+        <button class="submit" onclick="sendSecret()">إرسال التقرير السري</button>
+    </div>
+</div>
+
+
+<!-- ===== نافذة التقديم على المعهد العالي ===== -->
+<div class="modal" id="applicationModal">
+    <div class="modal-box">
+        <button class="close" onclick="closeModal('applicationModal')">إغلاق</button>
+        <h2>🎖️ التقديم - المعهد العالي (دورة الضباط)</h2>
+        <p style="font-size:12px; color:#c0392b; margin-bottom:12px;">* التقديم خاص بحملة شهادة البكالوريوس حصراً</p>
+        
+        <input type="text" placeholder="الاسم الرباعي واللقب">
+        <input type="tel" placeholder="رقم الهاتف">
+        <input type="text" placeholder="رقم البطاقة الوطنية / الرقم الوطني">
+        
+        <select id="degreeSelect" onchange="checkDegree()">
+            <option value="">اختر المؤهل الدراسي</option>
+            <option value="bachelor">شهادة بكالوريوس (مطلوب)</option>
+            <option value="other">مؤهل آخر (دبلوم / إعدادية)</option>
+        </select>
+
+        <div id="bachelorFields" style="display:none;">
+            <select>
+                <option value="">اختر تخصص البكالوريوس</option>
+                <option>هندسة حاسبات / أمن سبراني</option>
+                <option>هندسة مدني / كهرباء / ميكانيك</option>
+                <option>طب بشري / أسنان / صيدلة</option>
+                <option>قانون / علوم سياسية</option>
+                <option>إعلام / صحافة</option>
+                <option>لغات / ترجمة</option>
+                <option>تخصصات علمية أخرى</option>
+            </select>
+            <input type="number" step="0.01" placeholder="المعدل العام بالبكالوريوس (مثال: 75.5)">
+            <input type="text" placeholder="اسم الجامعة / الكلية">
+        </div>
+
+        <button class="submit" onclick="submitMilitaryApp()">متابعة واستكمال التقديم</button>
+    </div>
+</div>
+
+
+<footer>
+    <strong>عراقنا 🇮🇶 - بوابة وزارة الداخلية الرقمية</strong>
+    <br>
+    جميع الحقوق محفوظة © 2026
+    <br>
+    <span style="font-size:12px; opacity:.7">نموذج واجهة تجريبي</span>
+</footer>
+
+
+<script>
+// قوائم الخدمات لكل قسم بشكل منفصل لعدم التكرار
+const servicesData = {
+    'خدمات المرور والمركبات': [
+        '🚗 تجديد إجازة السوق (القيادة)',
+        '🚘 نقل ملكية مركبة (المشروع الوطني)',
+        '💳 الاعتراض وتسديد غرامات المرور',
+        '📑 إصدار لوحات تسجيل جديدة'
+    ],
+    'الخدمات المدنية والأحوال': [
+        '🪪 حجز الموعد الإلكتروني للبطاقة الوطنية',
+        '🛂 التقديم على الجواز الإلكتروني الجديد',
+        '📜 بيان ولادة / صورة قيد أحوال مدنية',
+        '🏠 بطاقة السكن وتحديث البيانات'
+    ],
+    'خدمات الحيازة والأدلة الجنائية': [
+        '📄 إصدار شهادة عدم المحكومية (الأدلة الجنائية)',
+        '🔫 إجازة حيازة وحمل السلاح الشخصي',
+        '🔍 متابعة بلاغات السرقة والمفقودات',
+        '🏛️ التصاديق والوثائق الرسمية'
+    ],
+    'خدمات دفاع مدني وأخرى': [
+        '🚒 شهادات السلامة المهنية للمحلات والمباني',
+        '🛡️ التقديم على المنظومات الأمنية للمؤسسات',
+        '📞 الاستعلام عن القضايا والبلاغات'
+    ]
+};
+
+function scrollToSection(id){
+    document.getElementById(id).scrollIntoView({ behavior:"smooth" });
+}
+
+function openServices(categoryName){
+    document.getElementById("serviceTitle").innerText = categoryName;
+    const listContainer = document.getElementById("serviceListContent");
+    listContainer.innerHTML = ""; // تفريغ العناصر القديمة
+
+    const items = servicesData[categoryName] || ['لا توجد خدمات متاحة حالياً'];
+    
+    items.forEach(itemText => {
+        const div = document.createElement("div");
+        div.className = "service-item";
+        div.innerText = itemText;
+        listContainer.appendChild(div);
+    });
+
+    document.getElementById("serviceModal").style.display = "flex";
+}
+
+function openReport(){
+    document.getElementById("reportModal").style.display = "flex";
+}
+
+function openSecret(){
+    document.getElementById("secretModal").style.display = "flex";
+}
+
+function openApplication(){
+    document.getElementById("applicationModal").style.display = "flex";
+}
+
+function closeModal(id){
+    document.getElementById(id).style.display = "none";
+}
+
+function checkDegree(){
+    const degreeSelect = document.getElementById("degreeSelect").value;
+    const bachelorFields = document.getElementById("bachelorFields");
+    
+    if(degreeSelect === "bachelor"){
+        bachelorFields.style.display = "block";
+    } else if(degreeSelect === "other"){
+        bachelorFields.style.display = "none";
+        alert("تنويه: التقديم على المعهد العالي يتطلب شهادة بكالوريوس حصراً.");
+    } else {
+        bachelorFields.style.display = "none";
     }
+}
 
-    function submitApplication() {
-      const name = document.getElementById('fullname').value;
-      const id = document.getElementById('idNum').value;
-
-      if (!selectedService) {
-        alert('يرجى اختيار نوع المعاملة أولاً.');
+function submitMilitaryApp(){
+    const degreeSelect = document.getElementById("degreeSelect").value;
+    if(degreeSelect !== "bachelor"){
+        alert("عذراً، الشروط تنص على ضرورة اختيار وتوفر شهادة البكالوريوس للتقديم على المعهد العالي.");
         return;
-      }
-      if (!name || !id) {
-        alert('يرجى ملء البيانات المطلوبة.');
-        return;
-      }
-
-      const randomCode = Math.floor(100000 + Math.random() * 900000);
-      document.getElementById('reqNumber').innerText = `رقم الطلب: #${randomCode} - (${selectedService})`;
-      document.getElementById('tracker').classList.remove('hidden');
-
-      alert(`✅ تم تقديم معاملتك بنجاح!\nرقم المتابعة الخاص بك هو: #${randomCode}`);
     }
-  </script>
+    alert("تم تسليم طلب التقديم المبدئي بنجاح إلى المعهد العالي.");
+    closeModal("applicationModal");
+}
+
+function sendReport(){
+    alert("تم تسجيل البلاغ وإرساله لوحدة الاستجابة السريعة.");
+    closeModal("reportModal");
+}
+
+function sendSecret(){
+    alert("تم إرسال البلاغ السري وتشفيره بنجاح.");
+    closeModal("secretModal");
+}
+</script>
+
 </body>
 </html>
